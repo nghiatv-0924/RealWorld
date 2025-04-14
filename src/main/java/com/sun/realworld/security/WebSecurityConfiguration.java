@@ -3,6 +3,7 @@ package com.sun.realworld.security;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
@@ -31,6 +32,8 @@ public class WebSecurityConfiguration {
             .formLogin(AbstractHttpConfigurer::disable)
             .authorizeHttpRequests(auth ->
                 auth.requestMatchers("/api/users/**")
+                    .permitAll()
+                    .requestMatchers(HttpMethod.GET, "/api/profiles/*")
                     .permitAll()
                     .anyRequest()
                     .authenticated()
