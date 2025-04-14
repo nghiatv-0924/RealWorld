@@ -38,6 +38,7 @@ public class WebSecurityConfiguration {
                         "/api/profiles/*",
                         "/api/articles",
                         "/api/articles/*",
+                        "/api/articles/*/comments",
                         "/api/tags"
                     )
                     .permitAll()
